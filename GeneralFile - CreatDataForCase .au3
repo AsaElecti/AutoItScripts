@@ -9,7 +9,7 @@ $dboAgrNumber = 124
 
 
 ;открываем файл РНК, считываем данные и закрываем файл
-$rnkOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\rnk.txt', 0)
+$rnkOpen = FileOpen('C:\Mine\Code\AutoIT\rnk.txt', 0)
 
 ; Проверяет, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $rnkOpen = -1 Then
@@ -22,7 +22,7 @@ FileClose($rnkOpen)
 
 MsgBox(0, "Содержимое the file rnk", $rnk)
 ;----------------------------------------------------------------------------------
-$branchOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\branch.txt', 0)
+$branchOpen = FileOpen('C:\Mine\Code\AutoIT\branch.txt', 0)
 
 ; Проверяет, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $branchOpen = -1 Then
@@ -35,7 +35,7 @@ FileClose($branchOpen)
 
 MsgBox(0, "Содержимое the file branch", $branch)
 ;----------------------------------------------------------------------------------
-$nameOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\name.txt', 0)
+$nameOpen = FileOpen('C:\Mine\Code\AutoIT\name.txt', 0)
 
 ; Проверяет, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $nameOpen = -1 Then
@@ -57,7 +57,7 @@ Func StartEmulator()
 	;Wait for CMD to be opened
 	WinWaitActive("Administrator: C:\Windows\system32\cmd.exe", "", 1)
 	;Ниже в комментах то как мы раньше вытаскивали запрос из файла и копировали в буфер
-	Send('cd c:\Program Files\BarsEmulator' & "{ENTER}");write down the path
+	Send('cd c:\Mine\BarsEmulator\' & "{ENTER}");write down the path
 	Send('start BARS-Emulyator.exe' & "{ENTER}")
 	WinWaitActive("BARS Tool")
 	Send("{ALT}{SPACE}{DOWN 4}"); kombinacia klavish dla togo chobi razvernut okno

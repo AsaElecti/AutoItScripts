@@ -107,7 +107,7 @@ Func StartEmulator()
 	Sleep(7000)
 EndFunc
 
-Func CreatAgrAll()
+Func CreatAgr($agrType, $branch, $status, $date, $dateClose, $userLogin, $userFio)
 	MouseClick("left", 35, 285, 1, 2000); нажимаем SetAgrData
 	Sleep(3000)
 	MouseClick("left", 250, 1020, 1, 3000);генерим пустой запрос - так емулятор быстрее раздупляется
@@ -119,25 +119,31 @@ Func CreatAgrAll()
 	Sleep(50)
 	MouseClick("left", 540, 85, 1, 3000)
 	Sleep(1000)
-	$request = '{"sessionid":"xdve0cqgh3cqt3f35rr1iwpt","method":"SetAgreementDataU","params":[{"agr_code":"124","RNK":'&$rnk&',"changed":"'&$date&'","created":"'&$date&'","client_type":2,"branch_id":"'&$branch&'","user_login":"U26_001_S60","user_fio":"Павлюченко Валентина  Андріївна","agr_type":"dep_uo","agr_status":"1","agr_number":"'&$depAgrNumber&'","agr_date_open":"'&$date&'","agr_date_close":""},{"agr_code":"125","RNK":'&$rnk&',"changed":"'&$date&'","created":"'&$date&'","client_type":2,"branch_id":"'&$branch&'","user_login":"U26_001_S60","user_fio":"Павлюченко Валентина  Андріївна","agr_type":"pr_uo","agr_status":"1","agr_number":"'&$prAgrNumber&'","agr_date_open":"'&$date&'","agr_date_close":""},{"agr_code":"126","RNK":'&$rnk&',"changed":"'&$date&'","created":"'&$date&'","client_type":2,"branch_id":"'&$branch&'","user_login":"U26_001_S60","user_fio":"Павлюченко Валентина  Андріївна","agr_type":"kpk_uo","agr_status":"10","agr_number":"126","agr_date_open":"'&$date&'","agr_date_close":""}, {"agr_code":"127","RNK":'&$rnk&',"changed":"'&$date&'","created":"'&$date&'","client_type":2,"branch_id":"'&$branch&'","user_login":"U26_001_S60","user_fio":"Павлюченко Валентина  Андріївна","agr_type":"dbo_uo","agr_status":"10","agr_number":"127","agr_date_open":"'&$date&'","agr_date_close":""}],"message_id":"BARS-MESS-379518"}'
-	Sleep(500)
+	$request = '{"sessionid":"1nmah2sa4fq33uoss0tzlzsa","method":"SetAgreementDataU","params":[{"agr_code":"321","RNK":"'&$rnk&'","changed":"'&$date&'","created":"'&$date&'","client_type":2,"branch_id":"'&$branch&'","user_login":"'&$userLogin&'","user_fio":"'&$userFio&'","agr_type":"dep_uo","agr_status":"'&$status&'","agr_number":"'&$depAgrNumber&'","agr_date_open":"'&$date&'","agr_date_close":"'&$dateClose&'"}],"message_id":"BARS-MESS-379518"}'
+
 	ClipPut($request)
 	Sleep(500)
 	Send("{DEL}"); это тут только для того,чтобы перейти к команде "Send" до вставки, так как она не всегда отрабатывает корректно
 	Sleep(200)
-	;Танцы с бубном, чтобы вставить строку из буфера: стандартная комбинация не всегда отрабатывает корректно
-	Send("{CTRLDOWN}") ; Удерживать клавишу CTRL нажатой
-	Sleep(200)
+
 	Send("^v")
 	Sleep(50)
-	Send("{CTRLUP}") ;Отпустить клавишу CTRL
 	Sleep(1000)
 	MouseClick("left", 350, 1020, 1, 3000)
 	Sleep(6000)
 EndFunc
 
 StartEmulator()
-CreatAgrAll()
+
+CreatAgr("dep_uo", "/335106/", "1", "02/09/2017 12:55:33", "", "U26_001_S60", "Павлюченко Валентина Андріївна" ); step 6 in testCase
+Sleep(2000)
+CreatAgr("dep_uo", "/335106/000218/", "1", "02/09/2017 12:55:33", "", "U26_001_S602", "Петренко Петро Петрович" ); step 10 in testCase
+Sleep(2000)
+CreatAgr("dep_uo", "/335106/000369/000379/", "0", "02/09/2017 12:55:33", "02/09/2017 12:55:33", "U26_001_S602", "Петренко Петро Петрович" ); step 14 in testCase
+Sleep(2000)
+CreatAgr("dep_uo", "/335106/", "0", "02/09/2017 12:55:33", "02/09/2024 12:55:33", "U26_001_S602", "Дмитренко Дмитро Дмитрович" ); step 15 in testCase
+Sleep(5000)
+
 WinClose("BARS Tool"); close BARS
 Sleep(2000)
 Send('exit' & "{ENTER}"); close CMD

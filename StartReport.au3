@@ -3,7 +3,7 @@
 AutoItSetOption("SendKeyDelay",10); Функция, которая устанавливает задержку между нажатиями клавиш, так как скрипт не всегда успевает написать все необходимое)))
 
 
-$rnkOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\rnk.txt', 0); открываем файл
+$rnkOpen = FileOpen('C:\Mine\Code\AutoIT\rnk.txt', 0); открываем файл
 ; Проверяем, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $rnkOpen = -1 Then
     MsgBox(4096, "Ошибка", "Невозможно открыть файл.")
@@ -17,7 +17,7 @@ FileClose($rnkOpen) ;закрываем файл
 ;----------------------------------------------------------------------------------
 
 
-$branchOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\branch.txt', 0); открываем файл
+$branchOpen = FileOpen('C:\Mine\Code\AutoIT\branch.txt', 0); открываем файл
 ; Проверяем, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $branchOpen = -1 Then
     MsgBox(4096, "Ошибка", "Невозможно открыть файл.")
@@ -31,7 +31,7 @@ FileClose($branchOpen);закрываем файл
 ;----------------------------------------------------------------------------------
 
 
-$nameOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\name.txt', 0); открываем файл
+$nameOpen = FileOpen('C:\Mine\Code\AutoIT\name.txt', 0); открываем файл
 ; Проверяем, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $nameOpen = -1 Then
     MsgBox(4096, "Ошибка", "Невозможно открыть файл.")
@@ -45,7 +45,7 @@ FileClose($nameOpen);закрываем файл
 ;----------------------------------------------------------------------------------
 
 
-$dateOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\date.txt', 0); открываем файл
+$dateOpen = FileOpen('C:\Mine\Code\AutoIT\date.txt', 0); открываем файл
 ; Проверяет, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $nameOpen = -1 Then
     MsgBox(4096, "Ошибка", "Невозможно открыть файл.")
@@ -59,7 +59,7 @@ FileClose($dateOpen);закрываем файл
 ;----------------------------------------------------------------------------------
 
 
-$depAgrNumberOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\depAgrNumber.txt', 0); открываем файл
+$depAgrNumberOpen = FileOpen('C:\Mine\Code\AutoIT\depAgrNumber.txt', 0); открываем файл
 ; Проверяет, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $nameOpen = -1 Then
     MsgBox(4096, "Ошибка", "Невозможно открыть файл.")
@@ -73,7 +73,7 @@ FileClose($depAgrNumberOpen);закрываем файл
 ;----------------------------------------------------------------------------------
 
 
-$prAgrNumberOpen = FileOpen('C:\docs_own\2017\scripts\autoIT\CreatCorpClient\CreatEverything\prAgrNumber.txt', 0); открываем файл
+$prAgrNumberOpen = FileOpen('C:\Mine\Code\AutoIT\prAgrNumber.txt', 0); открываем файл
 ; Проверяет, является ли файл открытым, перед тем как использовать функции чтения/записи в файл
 If $nameOpen = -1 Then
     MsgBox(4096, "Ошибка", "Невозможно открыть файл.")
@@ -95,7 +95,7 @@ Func StartEmulator()
 	;Wait for CMD to be opened
 	WinWaitActive("Administrator: C:\Windows\system32\cmd.exe", "", 1)
 	;Ниже в комментах то как мы раньше вытаскивали запрос из файла и копировали в буфер
-	Send('cd c:\Program Files\BarsEmulator' & "{ENTER}");write down the path
+	Send('cd c:\Mine\BarsEmulator\' & "{ENTER}");write down the path
 	Send('start BARS-Emulyator.exe' & "{ENTER}")
 	WinWaitActive("BARS Tool")
 	Send("{ALT}{SPACE}{DOWN 4}"); kombinacia klavish dla togo chobi razvernut okno
