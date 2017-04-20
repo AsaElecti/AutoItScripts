@@ -191,7 +191,7 @@ Func startIE(); go through autorization form
 EndFunc
 
 Func IEAuthorization(); go through autorization form
-	WinActivate( "Безопасность Windows" )
+	WinActivate( "Windows Security" )
 
 	Sleep(2000)
 	Send("svc.01.ea.unitedback@oschadbank2")
