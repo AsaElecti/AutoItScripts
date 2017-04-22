@@ -145,21 +145,18 @@ namespace Tests
         public void checkReport(string branch, string date) //Лезем в отчет и делаем проверку под IE
         {
 
-            //InternetExplorerOptions options = new InternetExplorerOptions();
-            //options.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
-            //IWebDriver driver = new InternetExplorerDriver(options);
-            IWebDriver driver = new InternetExplorerDriver();
-            Thread.Sleep(5000);
+            InternetExplorerOptions options = new InternetExplorerOptions();
+            options.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
+            IWebDriver driver = new InternetExplorerDriver(options);
+            driver.Manage().Window.Maximize();
 
-            driver.Navigate().GoToUrl("https://eashp-01-01.oschadbank2.ua/Reports.aspx");
-            //запускаем скрипт для прохождения авторизации на IE
-            Thread.Sleep(10000);
-            Process.Start("C:\\Mine\\Code\\AutoIT\\EAAutorization.exe");
+            //driver.Navigate().GoToUrl("https://eashp-01-01.oschadbank2.ua/Reports.aspx");
+            ////запускаем скрипт для прохождения авторизации на IE
+            Thread.Sleep(15000);
+            Process.Start("C:\\Mine\\Code\\AutoIT\\StartReport1.exe");
             Thread.Sleep(12000);
 
-            driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_CountOpenAccounts")).Click();// переходим на "Звіт
-            Thread.Sleep(10000);
-            Process.Start("C:\\Mine\\Code\\AutoIT\\EAAutorization.exe");// aurorization again
+            Process.Start("C:\\Mine\\Code\\AutoIT\\ConfirmReport.exe");// ЗАПУСКАЕМ скрипт который переходит на отчет
             Thread.Sleep(5000);
 
             driver.FindElement(By.XPath("//*[@id='AccountAmountReportTab']")).Click();//нажимаем на ближний элемент к форме, на который можем нажать)
@@ -230,19 +227,21 @@ namespace Tests
         public void TestMethod_11413()// создаем 81 счёт на разных уровнях branch
         {
             string date = "7/28/2017 11:43:57";//MM/DD/YYYY
-            //string branch = "/335106/000570/060570/";
             string branch = "/336503/000142/060142/";
 
-            creatTestData(branch, date);
-            synchrAgrAcc();
-            //branch = "/335106/000218/";
-            branch = "/336503/000142/";
-            creatTestData(branch, date);
-            synchrAgrAcc();
-            //branch = "/335106/";
-            branch = "/336503/";
-            creatTestData(branch, date);
-            synchrAgrAcc();
+            // записываем данные в файлы
+            System.IO.File.WriteAllText(@"C:\Mine\Code\AutoIT\date.txt", date.ToString());
+
+            //creatTestData(branch, date);
+            //synchrAgrAcc();
+            ////branch = "/335106/000218/";
+            //branch = "/336503/000142/";
+            //creatTestData(branch, date);
+            //synchrAgrAcc();
+            ////branch = "/335106/";
+            //branch = "/336503/";
+            //creatTestData(branch, date);
+            //synchrAgrAcc();
             checkReport(branch, date);
         }
 
