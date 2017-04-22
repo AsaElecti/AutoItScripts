@@ -191,6 +191,7 @@ Func startIE(); go through autorization form
 EndFunc
 
 Func IEAuthorization(); go through autorization form
+   Sleep(500)
 	WinActivate( "Windows Security" )
 
 	Sleep(2000)
