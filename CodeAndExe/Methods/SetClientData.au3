@@ -14,7 +14,7 @@ Func SetClientData($branch, $rnk, $name)
 	Sleep(50)
 	MouseClick("left", 540, 85, 1, 3000)
 	Sleep(1000)
-	$request = '{"sessionid":"xaap3wrv3y0eilo5gnij0fqu","method":"SetClientDataU","params":[{"branch_id":"'&$branch&'","rnk":'&$rnk&',"changed":'&$date&',"created":'&$date&',"client_type":"2","client_name":"'&$name&'","inn_edrpou":"25252525","user_login":"U26_001_S60","user_fio":"Павлюченко Валентина Андріївна","mergedRNK":[],"actualized_date":"","actualized_by":"","third_persons_clients":[], "third_persons_non_clients":[]}],"message_id":"BARS-MESS-379518"}'
+	$request = '{"sessionid":"btrpg2aohtzqaelgdtmno3qc","method":"SetClientData","params":[{"branch_id":"'&$branch&'","RNK":'&$rnk&',"changed":"'&$date&'","created":"'&$date&'","fio":"'&$name&'","client_type":"1","inn":"","birth_date":"07/14/1940 15:18:17","document_series":"","document_number":"","client_data":"","mergedRNK":[],"user_login":"U26_001_S60","user_fio":"Павлюченко Валентина Андріївна"}],"message_id":"BARS-MESS-379518"}'
 	Sleep(500)
 	ClipPut($request)
 	Sleep(500)

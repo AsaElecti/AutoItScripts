@@ -22,4 +22,4 @@ Func StartEmulator()
 	Sleep(1000)
  EndFunc
 
-;StartEmulator()
+StartEmulator()
